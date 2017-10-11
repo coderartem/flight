@@ -1,0 +1,9 @@
+<div class="scroll-container">
+    <div class="flghts-aval-title">
+        <h3>Flights Available Today (Click to see route):</h3>
+    </div>
+    
+    <div>
+    <flight  ng-repeat="trip in $listCtrl.resolvedFlightsList.data" trip="trip" ></flight>
+</div>
+</div>

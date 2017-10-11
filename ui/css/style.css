@@ -1,0 +1,135 @@
+.search-form {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.f-search-element {
+    background: rgba(73, 80, 86, 0.44);
+    border: 1px inset;
+     /* flex: 1 0px; */
+}
+
+.search-word {
+    color: #5a5757;
+}
+
+.search-select {
+    min-width: 15vw
+}
+
+.map {
+    /* flex: 4 0px;  */
+    width: 80vw;
+    height: 100%;
+}
+
+.map-1 {
+    height: 100%;
+}
+
+
+.top {
+    display: flex;
+    height: 40vh
+}
+
+.scroll-container {
+    overflow-y: scroll;
+    height: 50vh;
+    background: #e2e2e2;
+    border-top: 1px inset;
+}
+
+.bttm {
+    display: flex;
+    flex-flow: column;
+}
+
+.panel {
+    min-width: 390px
+}
+
+.tripNg {
+    display: flex;
+    flex-flow: column;
+}
+
+.navbar {
+    background-color: #d0d6dc;
+    border-color: rgba(97, 83, 83, 0.12);
+    margin-bottom: 0;
+
+}
+
+nav {
+    margin-bottom: 0;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    color: #555;
+    background-color: #d2d5d8;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #656161;
+    font-size: large;
+}
+
+.form-signin{
+    width: 30vw;
+    min-width: 300px;
+    padding-top: 20vh;
+}
+
+.signin-container {
+    display: flex;
+    justify-content: center;
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
+}
+
+.register {
+    width: 50vw;
+    min-width: 400px;
+}
+
+.titles {
+    align-self: center;
+}
+
+.sorry {
+    font-size: 50px;
+    align-self: center;
+}
+
+.trip-list-bttns {
+    display: flex;
+    justify-content: center;
+}
+
+.trip-list-statistics {
+    justify-content: space-around;
+    display: flex;
+    max-width: 70vw;
+    margin: auto;
+}
+
+.flghts-aval-title {
+    display: flex;
+    justify-content: center;
+}
+
+.route {
+    margin-left: 3%;
+}
+
+.btn {
+    margin: 5px;
+}

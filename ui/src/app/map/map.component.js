@@ -1,4 +1,4 @@
-import templateUrl from './map.component.html'
+import templateUrl from './map.template.html'
 
 /* @ngInject */
 class MapController {
@@ -11,24 +11,29 @@ class MapController {
     this.$map = $map
 
     // add markers from an angular constant
-    const { memphis, nashville, knoxville } = locations
-    const markers = [memphis, nashville, knoxville]
+    // const { memphis, nashville, knoxville } = locations
+    //const markers = [memphis, nashville, knoxville]
 
-    markers.forEach(marker => this.addMarker(marker))
+    //markers.forEach(marker => this.addMarker(marker))
 
     // add paths manually
-    const paths = [
-      [memphis, nashville, '#CC0099'],
-      [nashville, knoxville, '#AA1100']
-    ]
+    // const paths = [
+    //   [memphis, nashville, '#CC0099'],
+    //   [nashville, knoxville, '#AA1100']
+    // ]
 
-    paths.forEach(args => this.addPath(...args))
+    // paths.forEach(args => this.addPath(...args))
 
     // add path from webservice
-    $map.getMarkerByCityName('Chattanooga')
-      .then(chattanooga => {
-        this.addPath(knoxville, chattanooga, '#FF3388')
-      })
+    // $map.getMarkerByCityName('Chattanooga')
+    //   .then(chattanooga => {
+    //     this.addPath(knoxville, chattanooga, '#FF3388')
+    //   })
+    const paths = $map.paths;
+    paths.forEach(args => this.addPath(...args));
+    this.addMarker($map.destination);
+    //this.addPath($map.origin, $map.destination, '#FF3388');
+
   }
 
   addMarker ({ latitude, longitude }) {
