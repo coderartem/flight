@@ -1,9 +1,11 @@
 /* @ngInject */
 class MapService {
   paths=[]
+  allCities = {}
   constructor ($http, apiUrl, locations) {
     this.$http = $http
     this.apiUrl = apiUrl
+
 
 
     this.origin = locations['knoxville'];

@@ -1,15 +1,13 @@
 export default
 
-['$stateProvider', '$urlRouterProvider', '$uiViewScrollProvider', '$anchorScrollProvider', function ($stateProvider, $urlRouterProvider, $uiViewScrollProvider,$anchorScrollProvider, $transition$){
+['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $transition$){
     
-          $urlRouterProvider.otherwise('main');
-          $uiViewScrollProvider.useAnchorScroll();
-          $anchorScrollProvider.disableAutoScrolling();
+          $urlRouterProvider.otherwise('signin');
     
           var mainState = {
             name: 'main',
             url: '/main',
-            component: 'flightApp'
+            component: 'flightApp',
           }
     
           var signinState = {

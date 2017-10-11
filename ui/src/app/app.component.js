@@ -7,7 +7,7 @@ class AppController {
     
     this.username = sessionStorage.getItem('login');
   
-    $interval(()=>{$state.reload('main.flights-available')},15000);
+    $interval(()=>{$state.reload('.flights-available')},15000);
   }
   
 
