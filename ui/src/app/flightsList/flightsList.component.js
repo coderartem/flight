@@ -5,7 +5,9 @@ class FlightsListController {
 
     constructor ($flights) {
         this.$flights = $flights;
-    }
+}
+
+ 
 }
 
 export default {

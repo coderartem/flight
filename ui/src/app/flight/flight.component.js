@@ -10,6 +10,12 @@ class FlightController {
         this.bookStyle = $state.current.name==='main.flights-available'?true:false;
     }
 
+
+    /**
+     * Draw  available route on the map
+     * @param {*} origin 
+     * @param {*} destination 
+     */
     draw(origin,destination){
         this.$map.paths = [];
         

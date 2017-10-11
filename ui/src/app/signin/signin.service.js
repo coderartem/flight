@@ -5,6 +5,9 @@ class SigninService {
         this.apiUrl = apiUrl
     }
 
+    /**
+     * Verification of Client on sugn in
+     */
     verifyUser () {
         sessionStorage.setItem('login',this.credentials.login);
         sessionStorage.setItem('password',this.credentials.password);

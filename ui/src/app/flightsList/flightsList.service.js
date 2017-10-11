@@ -7,15 +7,14 @@ class FlightsListSrvice {
     
         }
     
+        /**
+         * Get all available for today flights
+         */
         getAvailableFilights(){
             return this.$http
             .get(`${this.apiUrl}/flights`)
         }
 
-        getMyFlightsHistory(){
-            return 
-
-        }
     }
 
 

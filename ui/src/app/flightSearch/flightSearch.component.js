@@ -9,6 +9,9 @@ class SearchController {
 
         this.$flightSearch = $flightSearch;
 
+        /**
+         * Getting all cities available from database for trip search <select> elements (dropdown menues)
+         */
         $flightSearch.getAllCities()
         .then(cit => {
         this.cities = cit;

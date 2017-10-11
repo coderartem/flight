@@ -6,6 +6,9 @@ class RegisterService {
         this.apiUrl = apiUrl
     }
 
+    /**
+     * Creation of new user
+     */
     createNewUser () {
         sessionStorage.setItem('login',this.credentials.login);
         sessionStorage.setItem('password',this.credentials.password);

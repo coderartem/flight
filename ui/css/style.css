@@ -7,7 +7,7 @@
 }
 
 .f-search-element {
-    background: rgba(73, 80, 86, 0.44);
+    background: rgba(29, 100, 142, 0.64);
     border: 1px inset;
      /* flex: 1 0px; */
 }
@@ -39,7 +39,7 @@
 
 .scroll-container {
     overflow-y: scroll;
-    height: 50vh;
+    height: 51.3vh;
     background: #e2e2e2;
     border-top: 1px inset;
 }
@@ -47,6 +47,7 @@
 .bttm {
     display: flex;
     flex-flow: column;
+    height: 51.3vh;
 }
 
 .panel {
@@ -58,9 +59,12 @@
     flex-flow: column;
 }
 
+.tripBlock   {
+    padding: 2% 0%;
+}
+
 .navbar {
     background-color: #d0d6dc;
-    border-color: rgba(97, 83, 83, 0.12);
     margin-bottom: 0;
 
 }
@@ -69,9 +73,14 @@ nav {
     margin-bottom: 0;
 }
 
+.navbar.navbar-default {
+    border-color: #adadad;
+}
+
 .navbar-default .navbar-nav > .active > a {
     color: #555;
     background-color: #d2d5d8;
+    
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -113,6 +122,7 @@ nav {
 .trip-list-bttns {
     display: flex;
     justify-content: center;
+    margin-bottom: 1.5%;
 }
 
 .trip-list-statistics {
@@ -120,11 +130,13 @@ nav {
     display: flex;
     max-width: 70vw;
     margin: auto;
+    font-size: 20px;
 }
 
 .flghts-aval-title {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .route {
@@ -148,4 +160,21 @@ select {
 
 option {
     font-size: large;
+}
+
+.navbar.navbar-default {
+    margin-bottom: 0;
+}
+
+.spacer {
+    margin: 5px 10px;
+    
+}
+
+.btn.btn-primary.spacer {
+    font-size: 20px;
+}
+
+.sticks {
+    color: #0046cc;
 }

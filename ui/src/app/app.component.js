@@ -5,7 +5,10 @@ class AppController {
   constructor ($log) {
     $log.debug('AppController is a go.');
     
+    this.username = sessionStorage.getItem('login');
+  
   }
+
 
   
 

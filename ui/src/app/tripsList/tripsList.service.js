@@ -8,11 +8,18 @@ class TripsListSrvice {
             this.$state = $state;
         }
 
+        /**
+         * Get flights history for signed in client
+         */
         getMyFlightsHistory() {
             return this.$http
             .get(`${this.apiUrl}/users/mytrips/`+sessionStorage.getItem('login'));
         }
 
+        /**
+         * Book a new trip for signed in client
+         * @param {*} tripArray 
+         */
         book(tripArray) {
             this.$http
             .post(`${this.apiUrl}/users/book/` + sessionStorage.getItem('login'), tripArray).then((res)=>{

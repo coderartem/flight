@@ -15,8 +15,19 @@ class TripsListController {
          
     }
 
-    
+    /**
+     * Background color of trip based on if element in ng-repeat even or odd
+     * @param {*} index 
+     */
+    bck(index){
+        let c = index%2===0?'"rgb(197, 200, 208)"':'"rgb(224, 224, 224)"'
+        return '{"background-color":'+c+'}';
+    }
 
+    /**
+     * Draw possible trip or trip from history on the map
+     * @param {*} tripArray 
+     */
     drawTrip(tripArray){
         this.$map.paths =[];
         for(let i=0; i<tripArray.length; i++){
@@ -29,13 +40,21 @@ class TripsListController {
                 this.$map.destination = this.locations[tripArray[i].destination.toLowerCase()]
             }
         }
-        this.$state.reload();
+        this.$state.reload('main');
     }
 
+    /**
+     * Book flight
+     * @param {*} tripArray 
+     */
     book(tripArray){
         this.$trips.book(tripArray);
     }
 
+    /**
+     * Calculation of total flight time for trip element
+     * @param {*} tripArray 
+     */
     flightTime(tripArray){
         let t=0;
         for(let i=0; i<tripArray.length; i++){
@@ -44,6 +63,10 @@ class TripsListController {
         return t;
     }
 
+    /**
+     * Calculation of number of stops for trip element
+     * @param {*} tripArray 
+     */
     stops(tripArray){
         let s=-1;
         for(let i=0; i<tripArray.length; i++){
@@ -52,10 +75,14 @@ class TripsListController {
         return s;
     }
 
+    /**
+     * Calculation total time at airport between flights on the trip
+     * @param {*} tripArray 
+     */
     offsetTime(tripArray){
         let o=0;
-        for(let i=0; i<tripArray.length; i++){
-            o+=tripArray[i].offset;
+        for(let i=1; i<tripArray.length; i++){
+            o+=tripArray[i].offset-tripArray[i-1].offset-tripArray[i].flightTime;
         }
         return o;
     }

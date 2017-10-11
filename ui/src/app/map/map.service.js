@@ -5,7 +5,6 @@ class MapService {
     this.$http = $http
     this.apiUrl = apiUrl
 
-   //const { memphis, nashville, knoxville, chattanooga } = locations
 
     this.origin = locations['knoxville'];
     this.destination = locations['nashville'];

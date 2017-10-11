@@ -3,12 +3,12 @@
                 <h3 ng-style="{{$tripsCtrl.routessStyle?{'visibility':'visible'}:{'display':'none'} }}">Possible Routes:</h3>
                 <h3 ng-style="{{$tripsCtrl.historyStyle?{'visibility':'visible'}:{'display':'none'} }}">Your flying history:</h3>
               </div>
-    <div ng-repeat="lol in $tripsCtrl.resolvedTripssList.data" class="tripBlock">
+    <div ng-repeat="lol in $tripsCtrl.resolvedTripssList.data" class="tripBlock" ng-style="{{$tripsCtrl.bck($index)}}">
         
-            <h4 class="route"><b>Route {{$index+1}}:</b></h4>
+            <h4 class="route"><b>Route {{$index+1}}:</b> &nbsp&nbsp&nbsp&nbsp{{lol[0].origin}} &nbsp&nbsp<i class="fa fa-fighter-jet" aria-hidden="true"></i> &nbsp&nbsp{{lol[lol.length-1].destination}}</h4>
             <p class="trip-list-bttns">
-        <button ng-click="$tripsCtrl.drawTrip(lol)" class="btn btn-primary">Show whole trip</button>
-        <button ng-click="$tripsCtrl.book(lol)" class="btn btn-primary" ng-style="{{$tripsCtrl.myStyle?{'visibility':'visible'}:{'display':'none'} }}">Book now</button>
+        <button ng-click="$tripsCtrl.drawTrip(lol)" class="btn btn-primary spacer">Show whole trip</button>
+        <button ng-click="$tripsCtrl.book(lol)" class="btn btn-primary spacer" ng-style="{{$tripsCtrl.myStyle?{'visibility':'visible'}:{'display':'none'} }}">Book now</button>
     </p>
     <div class="tripNg">
         <trip   lol="lol" ></trip>
@@ -17,8 +17,10 @@
         
         <div class="trip-list-statistics">
             <div><b>Total flight time:</b> &nbsp&nbsp{{$tripsCtrl.flightTime(lol)}}hrs</div> 
+            <div class="sticks">|</div>
             <div><b>Stops:</b> &nbsp&nbsp{{$tripsCtrl.stops(lol)}}</div> 
-            <div><b>TotalOffset:</b> &nbsp&nbsp{{$tripsCtrl.offsetTime(lol)}}</div>
+            <div class="sticks">|</div>
+            <div><b>Time spent at duty frees:</b> &nbsp&nbsp{{$tripsCtrl.offsetTime(lol)}}hrs</div>
         </div>
     
     </div>
