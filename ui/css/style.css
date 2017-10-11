@@ -178,3 +178,23 @@ option {
 .sticks {
     color: #0046cc;
 }
+
+.col-md-4:focus {
+    outline: none;
+    border: 0;
+ }
+
+ .col-md-4:hover{
+    transform: scale(1.03, 1.03);
+ }
+
+ .label-info {
+    background-color: rgba(119, 24, 72, 0.55)  !important;
+
+ }
+
+ .label {
+    color: #2b0707 !important;
+    padding: .3em .6em .3em  !important;
+    font-size: 18px !important;
+ }

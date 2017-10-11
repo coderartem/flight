@@ -1,8 +1,10 @@
 export default
 
-['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $transition$){
+['$stateProvider', '$urlRouterProvider', '$uiViewScrollProvider', '$anchorScrollProvider', function ($stateProvider, $urlRouterProvider, $uiViewScrollProvider,$anchorScrollProvider, $transition$){
     
           $urlRouterProvider.otherwise('main');
+          $uiViewScrollProvider.useAnchorScroll();
+          $anchorScrollProvider.disableAutoScrolling();
     
           var mainState = {
             name: 'main',
