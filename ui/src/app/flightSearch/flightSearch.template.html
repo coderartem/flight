@@ -1,11 +1,11 @@
 <div class="search-form">
     <h2 class="search-word">From:</h2>
-    <select ng-model="$srchCtrl.origin" ng-options="x.city for x in $srchCtrl.cities" class=" selectpicker">
+    <select ng-model="$srchCtrl.origin" ng-options="x.city for x in $srchCtrl.cities" class=" search-select ">
         </select>
     <h2 class="search-word">To:</h2>
-    <select ng-model="$srchCtrl.destination" ng-options="x.city for x in $srchCtrl.cities" class="search-select selectpicker">
+    <select ng-model="$srchCtrl.destination" ng-options="x.city for x in $srchCtrl.cities" class="search-select ">
         </select></br>
         <a ui-sref="main.route-search({origin:$srchCtrl.origin.city,destination:$srchCtrl.destination.city})">
-        <button type="button" class="search-select btn-action btn-primary">Search Flight</button>
+        <button type="button" class="search-select btn btn-danger">Search Flight</button>
     </a>
 </div>

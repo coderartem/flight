@@ -8,5 +8,6 @@ require('angular-messages')
 require('angular-ui-router')
 require('ngmap')
 
-require('bootstrap/dist/css/bootstrap.css')
-require('angular-material/angular-material.css')
+require('bootstrap/dist/css/bootstrap.css');
+require('bootstrap-select/dist/css/bootstrap-select.css');
+require('angular-material/angular-material.css');

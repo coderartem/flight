@@ -17,7 +17,8 @@
 }
 
 .search-select {
-    min-width: 15vw
+    min-width: 15vw;
+    font-size: large;
 }
 
 .map {
@@ -130,6 +131,21 @@ nav {
     margin-left: 3%;
 }
 
-.btn {
+.btn.btn-danger{
     margin: 5px;
+    font-size: 20px;
+
+}
+
+select {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F4F4;
+    font-size: large;
+    size: large;
+}
+
+option {
+    font-size: large;
 }
