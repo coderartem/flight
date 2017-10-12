@@ -23,9 +23,6 @@ class FlightSearchService {
     routeSearch(origin, destination){
         return this.$http
         .get(`${this.apiUrl}/flights/origin/`+origin+`/destination/`+destination)
-        .then((res) => {
-            return res;
-        })
     }
 }
 

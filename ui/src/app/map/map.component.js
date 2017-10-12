@@ -45,7 +45,6 @@ class MapController {
 
     for(let i=0; i<paths.length-1;i++){
       this.addStopCitiesMarks(paths[i][1]);
-      console.log(paths[i][1])
     }
 
   }

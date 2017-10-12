@@ -31,7 +31,7 @@ public class FlightsController {
 		return flightService.getDailyFlightList();
 	}
 	
-	@GetMapping("origin/{orig}/destination/{destin}")
+	@GetMapping("origin/{origin}/destination/{destination}")
 	public List<List<FlightDto>> getBestRoute(@PathVariable String origin, @PathVariable String destination){
 		return flightService.findRoutes(origin, destination);
 	}

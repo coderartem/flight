@@ -8,10 +8,10 @@ export default
             name: 'main',
             url: '/main',
             component: 'flightApp',
-
+            
           }
 
-        
+          
     
           var signinState = {
             name: 'signin',
@@ -87,7 +87,7 @@ export default
               resolvedTripssList: ['$flightSearch', '$transition$', '$trips', function($flightSearch, $transition$, $trips){
                 return $flightSearch.routeSearch($transition$.params().origin, $transition$.params().destination)
                 .then((res)=>{
-                  $trips.nothingStyle=false;
+                  $trips.nothingStyle = false;
                   $trips.sorryStyle = res.data.length===0?true:false;
                   return res;
                 })
@@ -95,7 +95,7 @@ export default
             }
           }
     
-         
+         // $stateProvider.state(getAllCitiesFromDBState);
           $stateProvider.state(routeSearchState);
           $stateProvider.state(myFlightsHistoryState);
           $stateProvider.state(availableFlightsState);
