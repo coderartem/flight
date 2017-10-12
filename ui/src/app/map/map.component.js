@@ -2,10 +2,13 @@ import templateUrl from './map.template.html'
 
 /* @ngInject */
 class MapController {
-  zoom = 7
-  center = [35.5175, -86.5804]
-  markers = []
-  paths = []
+  zoom = 7;
+  center = [35.5175, -86.5804];
+  markers = [];
+  paths = [];
+
+  customMarkers = [];
+  stopCitiesMarks = [];
 
   constructor ($map, locations) {
     this.$map = $map
@@ -34,11 +37,41 @@ class MapController {
     this.addMarker($map.destination);
     //this.addPath($map.origin, $map.destination, '#FF3388');
 
+    paths.forEach(a => {
+      let latitude = a[0].latitude-(a[0].latitude-a[1].latitude)/2;
+      let longitude = a[0].longitude-(a[0].longitude-a[1].longitude)/2;
+      this.addCustomMarkers({latitude,longitude})
+    })
+
+    for(let i=0; i<paths.length-1;i++){
+      this.addStopCitiesMarks(paths[i][1]);
+      console.log(paths[i][1])
+    }
+
   }
 
   addMarker ({ latitude, longitude }) {
     this.markers.push({
       position: `[${latitude}, ${longitude}]`
+    })
+  }
+/**
+ * Custom markers for flights paths with flight duration
+ * @param {*} param0 
+ */
+  addCustomMarkers ({ latitude, longitude }) {
+    this.customMarkers.push({
+      position: `[${latitude}, ${longitude}]`
+    })
+  }
+
+  /**
+   * Custom markers for cities on the way with layover time there
+   * @param {*} city 
+   */
+  addStopCitiesMarks (city) {
+    this.stopCitiesMarks.push({
+      position: `[${city.latitude}, ${city.longitude}]`
     })
   }
 

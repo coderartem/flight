@@ -25,7 +25,7 @@ class TripsListController {
     }
 
     /**
-     * Draw possible trip or trip from history on the map
+     * Draw possible trip or trip from history with all markers on the map
      * @param {*} tripArray 
      */
     drawTrip(tripArray){
@@ -39,6 +39,10 @@ class TripsListController {
             if(i===tripArray.length-1){
                 this.$map.destination = this.locations[tripArray[i].destination.toLowerCase()]
             }
+            if(i!=0){
+                this.$map.layover[i-1] = this.offsetTime([tripArray[i-1],tripArray[i]]);
+            }
+            this.$map.flightTime[i] = tripArray[i].flightTime;
         }
         this.$state.reload('main');
     }
@@ -57,9 +61,7 @@ class TripsListController {
      */
     flightTime(tripArray){
         let t=0;
-        for(let i=0; i<tripArray.length; i++){
-            t+=tripArray[i].flightTime;
-        }
+        tripArray.forEach(elem => t+=elem.flightTime);
         return t;
     }
 
@@ -69,9 +71,7 @@ class TripsListController {
      */
     stops(tripArray){
         let s=-1;
-        for(let i=0; i<tripArray.length; i++){
-            s++;
-        }
+        tripArray.forEach(elem => s++);
         return s;
     }
 
@@ -82,7 +82,7 @@ class TripsListController {
     offsetTime(tripArray){
         let o=0;
         for(let i=1; i<tripArray.length; i++){
-            o+=tripArray[i].offset-tripArray[i-1].offset-tripArray[i].flightTime;
+            o+=tripArray[i].offset-tripArray[i-1].offset-tripArray[i-1].flightTime;
         }
         return o;
     }

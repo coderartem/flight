@@ -1,17 +1,20 @@
 /* @ngInject */
 class MapService {
-  paths=[]
-  allCities = {}
-  constructor ($http, apiUrl, locations) {
-    this.$http = $http
-    this.apiUrl = apiUrl
-
+  paths=[];
+  allCities = {};
+  flightTime = [];
+  layover = [];
+  constructor ($http, apiUrl, locations, $state) {
+    this.$http = $http;
+    this.apiUrl = apiUrl;
+    this.$state = $state;
 
 
     this.origin = locations['knoxville'];
     this.destination = locations['nashville'];
     this.paths.push([this.origin, this.destination, '#FF3388']);
   }
+
 
   getMarkerByCityName (name) {
     return this.$http

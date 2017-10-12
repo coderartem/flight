@@ -23,6 +23,8 @@ class FlightController {
         this.$map.destination = this.locations[destination.toLowerCase()];
         this.$map.paths.push([this.$map.origin,this.$map.destination, '#FF3388']);
         this.$state.reload('main');
+
+        this.$map.flightTime[0] = this.trip.flightTime;
     }
 }
 export default {

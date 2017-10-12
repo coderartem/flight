@@ -198,3 +198,15 @@ option {
     padding: .3em .6em .3em  !important;
     font-size: 18px !important;
  }
+
+ .marker {
+     background: rgba(163, 191, 247, 0.82);
+     padding: 2px;
+     font-size: 15px;
+ }
+
+ .stop-cities {
+    background: rgba(159, 255, 34, 0.82);
+    padding: 2px;
+    font-size: 15px;
+ }

@@ -23,5 +23,8 @@ class SearchController {
 export default {
     templateUrl,
     controller: SearchController,
-    controllerAs: '$srchCtrl'
+    controllerAs: '$srchCtrl',
+    bindings: {
+        resolveCities: '='
+    }
 }

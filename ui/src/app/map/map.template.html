@@ -4,7 +4,17 @@
 	  <marker
 	    ng-repeat="$mapMarker in $mapCtrl.markers"
 	    position="{{$mapMarker.position}}">
-	  </marker>
+		</marker>
+		<custom-marker ng-repeat="cm in $mapCtrl.customMarkers" position="{{cm.position}}">
+		<div class="marker">
+			<div> <b>Flight Time: {{$mapCtrl.$map.flightTime[$index]}} hrs</b> </div>
+		</div>
+	</custom-marker>
+	<custom-marker ng-repeat="stops in $mapCtrl.stopCitiesMarks" position="{{stops.position}}">
+			<div class="stop-cities">
+				<div> <b>Layover Time: {{$mapCtrl.$map.layover[$index]}} hrs</b> </div>
+			</div>
+		</custom-marker>
 	  <shape
 	    ng-repeat="$mapPath in $mapCtrl.paths"
 	    name="polyline"
