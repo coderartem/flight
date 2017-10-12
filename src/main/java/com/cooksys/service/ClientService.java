@@ -87,8 +87,8 @@ public class ClientService {
 		Client client = clientRepository.findByCredentialsLogin(login);
 		List<Trip> trips = client.getTrips();
 		List<List<FlightDto>> flightsList = new ArrayList<>();
-		for(Trip x : trips){
-			flightsList.add(flightMapper.dtosFromFlights(x.getFlights()));
+		for(int i=trips.size()-1; i>=0; i--){							//Going backwards to get most recent trips on top on the client side
+			flightsList.add(flightMapper.dtosFromFlights(trips.get(i).getFlights()));
 		}
 		return flightsList;
 	}

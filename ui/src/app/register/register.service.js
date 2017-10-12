@@ -19,7 +19,9 @@ class RegisterService {
         return this.$http
             .post(`${this.apiUrl}/users/new`, this.credentials)
             .then(result => {
-                alert('Server Error or user already exist');
+                if(!result.data){
+                    alert('Server Error or user already exist');
+                }
              return result.data
             })
     }

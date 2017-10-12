@@ -25,12 +25,15 @@ public class FlightsController {
 	@Autowired
 	FlightService flightService;
 	
+	
+	//Get lis of generated flights
 	@GetMapping
 	public ArrayList<FlightDto> getFlightList()
 	{
 		return flightService.getDailyFlightList();
 	}
 	
+	//Get possible routes from origin to destination
 	@GetMapping("origin/{origin}/destination/{destination}")
 	public List<List<FlightDto>> getBestRoute(@PathVariable String origin, @PathVariable String destination){
 		return flightService.findRoutes(origin, destination);
