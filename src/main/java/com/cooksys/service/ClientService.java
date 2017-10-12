@@ -7,72 +7,90 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cooksys.dto.TripDto;
+import com.cooksys.dto.FlightDto;
 import com.cooksys.entity.Client;
 import com.cooksys.entity.Flight;
 import com.cooksys.entity.Trip;
 import com.cooksys.mapper.ClientMapper;
 import com.cooksys.mapper.FlightMapper;
-import com.cooksys.mapper.TripMapper;
 import com.cooksys.pojo.Credentials;
-import com.cooksys.pojo.FlightDto;
 import com.cooksys.repository.ClientRepository;
 import com.cooksys.repository.FlightRepository;
 import com.cooksys.repository.TripRepository;
 
+/**
+ * 
+ * @author Artem Kolin
+ *
+ */
 @Service
 public class ClientService {
 	
 	@Autowired
-	ClientRepository cR;
+	ClientRepository clientRepository;
 	
 	@Autowired
-	ClientMapper cM;
+	ClientMapper clientMapper;
 	
 	@Autowired
-	TripRepository tR;
+	TripRepository tripRepository;
 	
 	@Autowired
-	FlightMapper fM;
+	FlightMapper flightMapper;
 	
 	@Autowired
-	FlightRepository fR;
-	
-	@Autowired
-	TripMapper tM;
+	FlightRepository flightRepository;
 
-	public boolean newClient(Credentials cred) {
-		if(cR.findByCredentials(cred)!=null) return false;
-		cR.save(cM.fromCred(cred));
+	
+	/**
+	 * Creation of new client if he/she doesn't exist already
+	 * @param credentials
+	 * @return
+	 */
+	public boolean newClient(Credentials credentials) {
+		if(clientRepository.findByCredentials(credentials)!=null) return false;
+		clientRepository.save(clientMapper.fromCred(credentials));
 		return true;
-		
-		
 	}
 
-	public boolean verifyClient(Credentials cred) {
-		return cR.findByCredentials(cred)!=null;
-		
+	/**
+	 * Verification of user crdentials on sign in
+	 * @param credentials
+	 * @return boolean
+	 */
+	public boolean verifyClient(Credentials credentials) {
+		return clientRepository.findByCredentials(credentials)!=null;
 	}
 
+	/**
+	 * This method save booked by user flights to database as Trip object and create relationship between Client and Trip (list of fligts)
+	 * @param login - username
+	 * @param tripFlights - list of flights on a trip
+	 */
 	@Transactional
-	public void bookTrip(String login, List<FlightDto> tripArray) {
-		Client client = cR.findByCredentialsLogin(login);
+	public void bookTrip(String login, List<FlightDto> tripFlights) {
+		Client client = clientRepository.findByCredentialsLogin(login);
 		Trip newTrip = new Trip();
 		newTrip.setClient(client);
-		List<Flight> flights = fM.DtosToFlights(tripArray);
-		fR.save(flights);
+		List<Flight> flights = flightMapper.flightsFromDtos(tripFlights);
+		flightRepository.save(flights);
 		newTrip.setFlights(flights);
-		tR.saveAndFlush(newTrip);
+		tripRepository.saveAndFlush(newTrip);
 	}
 
+	/**
+	 * This method pulls all user trips from database and return them as array of arrays (trips)
+	 * @param login - username
+	 * @return array of trips
+	 */
 	public List<List<FlightDto>> getMyTrips(String login) {
-		Client client = cR.findByCredentialsLogin(login);
-		List<TripDto> trips = tM.tripstoDtos(client.getTrips());
-		List<List<FlightDto>> fDto = new ArrayList<>();
-		for(TripDto x : trips){
-			fDto.add(x.getFlights());
+		Client client = clientRepository.findByCredentialsLogin(login);
+		List<Trip> trips = client.getTrips();
+		List<List<FlightDto>> flightsList = new ArrayList<>();
+		for(Trip x : trips){
+			flightsList.add(flightMapper.dtosFromFlights(x.getFlights()));
 		}
-		return fDto;
+		return flightsList;
 	}
 
 }

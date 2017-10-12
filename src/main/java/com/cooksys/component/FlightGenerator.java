@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Component;
 
+import com.cooksys.dto.FlightDto;
 import com.cooksys.pojo.Cities;
-import com.cooksys.pojo.FlightDto;
 
 @Component
 public class FlightGenerator {

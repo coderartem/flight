@@ -3,6 +3,7 @@ class SigninService {
     constructor ($http, apiUrl) {
         this.$http = $http
         this.apiUrl = apiUrl
+        this.donaldStyle = {display: 'none'};
     }
 
     /**
@@ -16,7 +17,12 @@ class SigninService {
         sessionStorage.setItem('login',this.credentials.login);
         sessionStorage.setItem('password',this.credentials.password);
         return this.$http
-            .post(`${this.apiUrl}/users/verify`, this.credentials)
+            .post(`${this.apiUrl}/users/verify`, this.credentials).then((res) => {
+                if(!res.data){
+                    this.donaldStyle = {display: 'block', opacity: 0.5, "margin-bottom": '8%'}
+                }
+                return res;
+            })
     }
 }
 

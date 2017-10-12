@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cooksys.pojo.FlightDto;
+import com.cooksys.dto.FlightDto;
 import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
 
@@ -32,8 +32,8 @@ public class FlightsController {
 	}
 	
 	@GetMapping("origin/{orig}/destination/{destin}")
-	public List<List<FlightDto>> getBestRoute(@PathVariable String orig, @PathVariable String destin){
-		return flightService.findRoutes(orig, destin);
+	public List<List<FlightDto>> getBestRoute(@PathVariable String origin, @PathVariable String destination){
+		return flightService.findRoutes(origin, destination);
 	}
 
 }

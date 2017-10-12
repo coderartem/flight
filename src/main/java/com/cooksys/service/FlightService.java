@@ -8,8 +8,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.component.FlightGenerator;
-import com.cooksys.pojo.FlightDto;
+import com.cooksys.dto.FlightDto;
 
+/**
+ * 
+ * @author Artem Kolin
+ *
+ */
 @Service
 public class FlightService {
 
@@ -24,7 +29,7 @@ public class FlightService {
 	}
 	
 	//The fixedDelay parameter determines how often a new day is generated as expressed in milliseconds
-	@Scheduled(fixedDelay=180000)
+	@Scheduled(fixedDelay=30000)
 	private void refreshFlights()
 	{
 		
@@ -35,7 +40,12 @@ public class FlightService {
 		
 	}
 
-	
+	/**
+	 * This method return List of all possible routes from flight origin to destination
+	 * @param origin
+	 * @param destination
+	 * @return List of possible trips
+	 */
 	public List<List<FlightDto>> findRoutes(String origin, String destination) {
 		List<FlightDto> scheduledFlights = flightList;
 		List<List<FlightDto>> flightRoutes = new ArrayList<List<FlightDto>>();
@@ -55,7 +65,7 @@ public class FlightService {
 						List<FlightDto> oneStop = new ArrayList<FlightDto>();
 						
 						if (scheduledFlights.get(j).getOrigin().equals(stopOne.toUpperCase()) &&
-							scheduledFlights.get(j).getOffset() > (scheduledFlights.get(i).getOffset() + scheduledFlights.get(i).getFlightTime()+1)) {
+							scheduledFlights.get(j).getOffset() > (scheduledFlights.get(i).getOffset() + scheduledFlights.get(i).getFlightTime() + 1)) {
 							
 							if(scheduledFlights.get(j).getDestination().equals(destination.toUpperCase())){
 								oneStop.add(scheduledFlights.get(i));
@@ -69,7 +79,7 @@ public class FlightService {
 									List<FlightDto> twoStops = new ArrayList<FlightDto>();
 									
 									if (scheduledFlights.get(g).getOrigin().equals(stopTwo.toUpperCase()) &&
-											scheduledFlights.get(g).getOffset() > (scheduledFlights.get(j).getOffset() + scheduledFlights.get(j).getFlightTime()+1) &&
+											scheduledFlights.get(g).getOffset() > (scheduledFlights.get(j).getOffset() + scheduledFlights.get(j).getFlightTime() + 1) &&
 											scheduledFlights.get(g).getDestination().equals(destination.toUpperCase())){
 										twoStops.add(scheduledFlights.get(i));
 										twoStops.add(scheduledFlights.get(j));
@@ -79,9 +89,7 @@ public class FlightService {
 									}
 								}
 							}
-							
 						}
-						
 					}
 				}
 			}				

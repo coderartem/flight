@@ -5,6 +5,7 @@ class TripsListSrvice {
             this.$http = $http;
             this.apiUrl = apiUrl;
             this.sorryStyle = false;
+            this.nothingStyle = false;
             this.$state = $state;
         }
 

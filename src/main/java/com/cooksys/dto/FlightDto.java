@@ -1,4 +1,4 @@
-package com.cooksys.pojo;
+package com.cooksys.dto;
 
 import java.util.List;
 

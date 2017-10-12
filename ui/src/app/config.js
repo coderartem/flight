@@ -8,7 +8,7 @@ export default
             name: 'main',
             url: '/main',
             component: 'flightApp',
-        
+
           }
 
         
@@ -19,6 +19,7 @@ export default
             component: 'flightSignin',
             onEnter: ['$signin', function ($signin){
               sessionStorage.clear();
+              $signin.donaldStyle = {"display": "none"}
             }]
           }
     
@@ -69,7 +70,11 @@ export default
             component: 'tripsList',
             resolve: {
               resolvedTripssList: ['$trips', function($trips){
-                return $trips.getMyFlightsHistory();
+                return $trips.getMyFlightsHistory().then((result) => {
+                  $trips.sorryStyle=false;
+                  $trips.nothingStyle = result.data.length===0?true:false;
+                  return result;
+                });
               }]
             }
           }
@@ -82,6 +87,7 @@ export default
               resolvedTripssList: ['$flightSearch', '$transition$', '$trips', function($flightSearch, $transition$, $trips){
                 return $flightSearch.routeSearch($transition$.params().origin, $transition$.params().destination)
                 .then((res)=>{
+                  $trips.nothingStyle=false;
                   $trips.sorryStyle = res.data.length===0?true:false;
                   return res;
                 })
@@ -89,7 +95,7 @@ export default
             }
           }
     
-         // $stateProvider.state(getAllCitiesFromDBState);
+         
           $stateProvider.state(routeSearchState);
           $stateProvider.state(myFlightsHistoryState);
           $stateProvider.state(availableFlightsState);

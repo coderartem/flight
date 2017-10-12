@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.cooksys.pojo.FlightDto;
+import com.cooksys.dto.FlightDto;
 
 @Entity
 public class Trip {

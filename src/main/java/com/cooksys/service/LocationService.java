@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import com.cooksys.entity.Location;
 import com.cooksys.repository.LocationRepository;
 
+/**
+ * Didn't modify anything here
+ * @author ftd-13
+ *
+ */
 @Service
 public class LocationService {
 	

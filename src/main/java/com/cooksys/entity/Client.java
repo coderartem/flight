@@ -10,8 +10,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.cooksys.pojo.Credentials;
-import com.cooksys.pojo.FlightDto;
-import com.cooksys.pojo.Profile;
 
 @Entity
 public class Client {
