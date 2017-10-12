@@ -8,10 +8,10 @@ export default
             name: 'main',
             url: '/main',
             component: 'flightApp',
-  
+        
           }
 
-   
+        
     
           var signinState = {
             name: 'signin',
@@ -28,7 +28,7 @@ export default
             redirectTo: (transition) => {
               let svc = transition.injector().get('$signin');
               return svc.verifyUser().then((result) => {
-                return result.data? 'allCitiesFromDB':'signin';
+                return result.data? 'main.flights-available':'signin';
               })
             }
           }
@@ -45,7 +45,7 @@ export default
             redirectTo: (transition) => {
               return transition.injector().get('$register').createNewUser()
               .then((result) => {
-                return result?'allCitiesFromDB':'register';
+                return result?'main.flights-available':'register';
               });
             }
           }
